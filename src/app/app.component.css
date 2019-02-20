@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    background: #444343;
+    overflow: hidden;
+    margin: 0em auto;
+    width: 1000px;
+}
+#temp{
+    margin: 30px auto;
+    height: 300px;
+    width: 150px;
+    background-color: aquamarine;
+}
+#logo{
+    padding: 20px;
+}
+h1{
+    font-weight: 700;
+}
+#logo a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFF;
+}
+#contact{
+    /* text-align: right; */
+    color: #FFF;
+    /* right: 0; */
+    margin-left: auto;
+    margin-right: 15px;
+}
+#helow{
+    margin-top: 15px;
+    color: rgb(88, 166, 218);
+    font-size: 1.5em ;
+}
