@@ -1,4 +1,10 @@
 #temp{
-    margin: 30px auto;
-    background-color: aquamarine;
+    /* margin: 30px auto; */
+    background-color: rgb(241,241,241);
+    padding: 25px;
+    /* border: 1px solid black; */
+    /* width: 300px; */
 }
+/* app-log-in{
+    margin: 30px auto;
+} */

@@ -1,0 +1,35 @@
+#cont *{
+    /* display: block; */
+    margin: 7px auto;
+}
+#cont {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    margin: 30px auto; 
+    background-color: white;
+    /* border: 1px solid black; */
+     width: 300px;
+}
+#cont label, #cont input{
+    margin-left: 10%;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 2px;
+}
+#cont input{
+background-color: rgb(241,241,241);
+border-width: 1px;
+}
+
+
+img{
+    height:180px ;
+}
+#cont input[type=submit]{
+    margin: 25px auto;
+    background: #444343;
+    color: white;
+}
