@@ -12,7 +12,9 @@
   
     <router-outlet></router-outlet>
   
-  <div class="header">
-footer
+  <div class="header" id="footer">
+<h3 *ngIf='numItems!==undefined'>In our web store <span>{{numItems}}</span> product to sale</h3>
+<h3 *ngIf='numOrders!==undefined'>In our web store invited <span>{{numOrders}}</span> orders</h3>
+<h3>we are make delivery to any place </h3>
   </div>
 

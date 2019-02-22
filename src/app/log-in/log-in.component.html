@@ -1,11 +1,12 @@
-<div id="cont"> <h1>welcome</h1>
+<form id="cont" [formGroup]='formLogIn' (ngSubmit)="onSubmit()"> <h1>welcome</h1>
 <img src="assets/logIn.png" alt="">
 <label for="email">Email</label>
-  <input id="email" type="text">
-
+  <input id="email" type="email" formControlName='email' required [class.noValid]='inputs.email.invalid && submited'>
+<p *ngIf="inputs.email.invalid && submited">email is required</p>
 <label for="password">Password</label>
-  <input id="password" type="password">
+<input id="password" type="password"  formControlName='password' required [class.noValid]='inputs.password.invalid && submited'>
+<p *ngIf="inputs.password.invalid && submited">password is required</p>
 
 <input type="submit" value="LOG IN">
 <h3>Don’t have an account? <a href="#">Sign Up</a> </h3>
-</div>
+</form>

@@ -11,7 +11,7 @@
     /* border: 1px solid black; */
      width: 300px;
 }
-#cont label, #cont input{
+#cont label, #cont input , #cont p{
     margin-left: 10%;
     margin-right: auto;
     width: 80%;
@@ -32,4 +32,10 @@ img{
     margin: 25px auto;
     background: #444343;
     color: white;
+}
+.noValid{
+    border: 1px red solid;
+}
+p{
+    color: red;
 }

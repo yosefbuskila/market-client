@@ -29,3 +29,16 @@ h1{
     color: rgb(88, 166, 218);
     font-size: 1.5em ;
 }
+#footer{
+    display: flex;
+    flex-direction: column;
+}
+#footer h3{
+    color: white; 
+    margin: 10px auto;
+}
+#footer h3 span{
+    font-size: 1.2em;
+    margin: 0 6px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}

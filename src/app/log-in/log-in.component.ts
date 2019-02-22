@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-
-  constructor() { }
+  submited=false;
+formLogIn=new FormGroup({
+  "email": new FormControl(),
+	"password": new FormControl()
+})
+inputs;
+  constructor() {
+    this.inputs=this.formLogIn.controls;
+   }
 
   ngOnInit() {
+  }
+  onSubmit(){
+    this.submited=true;
+    console.log(this.formLogIn)
   }
 
 }
