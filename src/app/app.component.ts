@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import{HttpserviceService} from './httpservice.service'
+import{HttpService} from './httpservice.service'
 import { from } from 'rxjs';
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent {
   nameOfUser = 'guest';
   private numOrders:number;
   private numItems:number;
-  constructor(private httpService:HttpserviceService){  }
+  constructor(private httpService:HttpService){  }
   ngOnInit() {
     this.getNums();
   }

@@ -1,8 +1,11 @@
 <form id="cont" [formGroup]='formLogIn' (ngSubmit)="onSubmit()"> <h1>welcome</h1>
 <img src="assets/logIn.png" alt="">
 <label for="email">Email</label>
-  <input id="email" type="email" formControlName='email' required [class.noValid]='inputs.email.invalid && submited'>
-<p *ngIf="inputs.email.invalid && submited">email is required</p>
+  <input id="email" type="email" formControlName='email' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [class.noValid]='inputs.email.invalid && submited'>
+  <div *ngIf="inputs.email.invalid && submited">
+<p *ngIf="inputs.email.errors.required">email is required</p>
+<p *ngIf="inputs.email.errors.pattern">A standard email address is required</p>
+</div>
 <label for="password">Password</label>
 <input id="password" type="password"  formControlName='password' required [class.noValid]='inputs.password.invalid && submited'>
 <p *ngIf="inputs.password.invalid && submited">password is required</p>
