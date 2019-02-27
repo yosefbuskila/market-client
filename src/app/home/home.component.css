@@ -1,10 +1,11 @@
-#temp{
-    /* margin: 30px auto; */
-    background-color: rgb(241,241,241);
+#cont{
+    display: flex;
+    /* background-color: rgb(241,241,241); */
     padding: 25px;
-    /* border: 1px solid black; */
-    /* width: 300px; */
 }
-/* app-log-in{
-    margin: 30px auto;
-} */
+#cont div{
+    margin: 25px;
+}
+h3 span{
+    font-size: 1.4em;
+}

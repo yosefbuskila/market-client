@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    background-color: rgb(241,241,241);
+/* body{ */
+    /* background-color: rgb(241,241,241); */
+/* } */
+button{
+    background-color: #444343;
+    color: white;
+    /* height: 40px; */
+    padding: 13px;
+    border: 2px rgb(88, 166, 218) solid;
 }
