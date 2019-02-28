@@ -10,9 +10,16 @@ export class AppComponent {
   nameOfUser = 'guest';
   private numOrders:number;
   private numItems:number;
-  constructor(private httpService:HttpService){  }
+  constructor(private httpService:HttpService){
+    
+    }
   ngOnInit() {
     this.getNums();
+    // if(localStorage['userDetails']){
+    //   const ud=JSON.parse(localStorage['userDetails'])
+    //   this.nameOfUser=ud.first_name +' '+ud.last_name;
+    //   console.log(ud)
+    // }
   }
   getNums(){
     this.httpService.getNumOrders().subscribe((data)=>this.numOrders=data[0])

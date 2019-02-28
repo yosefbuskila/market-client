@@ -3,7 +3,7 @@
     /* background-color: rgb(241,241,241); */
     padding: 25px;
 }
-#cont div{
+#cont > div{
     margin: 25px;
 }
 h3 span{

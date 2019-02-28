@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpService } from '../httpservice.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,20 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 userDetails=localStorage['userDetails'];
 entryDetails=localStorage['entryDetails'];
-  constructor(private router:Router) {
-    if(!this.entryDetails)
+lastOrder:any=[];
+  constructor(
+    private router:Router,
+    private httpService:HttpService
+    ) {
+    if(!this.entryDetails){
     this.router.navigate(['/logIn'])
+    return;
+    }
+    this.httpService.getLastOrder(this.entryDetails).subscribe((data)=>{
+      this.lastOrder=data.data;
+      console.log('ans:',data.data)
+      console.log('len:',this.lastOrder.length)
+            }  )
    }
 
   ngOnInit() {

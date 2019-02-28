@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
   private url='http://localhost:3000/';
-  httpOptions = {
+  heaJson = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   constructor(private http:HttpClient) { }
@@ -18,6 +18,9 @@ export class HttpService {
     return this.http.get<[number]>(this.url+'gen/sum/items');
   }
   logIn(logInData):Observable<any>{
-    return this.http.post<any>(this.url+'user/login',logInData,this.httpOptions);
+    return this.http.post<any>(this.url+'user/login',logInData,this.heaJson);
+  }
+  getLastOrder(entryDetails):Observable<any>{
+    return this.http.post<any>(this.url+'api/last_order',entryDetails,this.heaJson);
   }
 }
