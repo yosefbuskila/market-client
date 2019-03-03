@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpService } from '../httpservice.service';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-log-in',
@@ -17,7 +18,8 @@ formLogIn=new FormGroup({
 inputs;
   constructor(
     private httpService:HttpService,
-    private router:Router
+    private router:Router,
+    private dataService:DataService
   ) {
     this.inputs=this.formLogIn.controls;
    }
@@ -40,6 +42,7 @@ inputs;
       }
       localStorage['entryDetails']=JSON.stringify( data['entryDetails'])
       localStorage['userDetails']=JSON.stringify(data['userDetails'])
+      this.dataService.setProp();
       this.router.navigate(['/home'])
       // this.location.replaceState('home')
       }  )

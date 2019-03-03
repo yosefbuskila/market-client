@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import{HttpService} from './httpservice.service'
 import { from } from 'rxjs';
+import { DataService } from './data.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  nameOfUser = 'guest';
+  // nameOfUser = 'guest';
   private numOrders:number;
   private numItems:number;
-  constructor(private httpService:HttpService){
+  constructor(private httpService:HttpService , private dataService:DataService){
     
     }
   ngOnInit() {
