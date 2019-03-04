@@ -1,4 +1,4 @@
-<form [formGroup]="profileForm" id="myForm" (submit)="onSubmit()">
+<form [formGroup]="profileForm" id="myForm">
   <div  formGroupName="firstForm" [hidden]="!firstSwitch">
     <h2>register  ---   STEP 1</h2>
     <hr>
@@ -11,17 +11,25 @@
   <p *ngIf="firstForm.email.errors.pattern">enter normal email adress!!</p>
 </span>
 </div>
-  <label><span>password</span><input type="password" formControlName="password" required [class.noValid]="firstForm.password.invalid &&( firstForm.password.touched || triedFirst)"></label>
+  <label><span>password</span><input (keyup)='onClickPassword()' type="password" formControlName="password" required [class.noValid]="firstForm.password.invalid &&( firstForm.password.touched || triedFirst)"></label>
   <div class="textValid"><p *ngIf="firstForm.password.invalid &&( firstForm.password.touched || triedFirst)">this field is required!!</p></div>
-  <label><span>confirm password</span><input type="password" formControlName="confirmPassword" required [class.noValid]="firstForm.confirmPassword.invalid &&( firstForm.confirmPassword.touched || triedFirst)"></label>
-  <div class="textValid"><p *ngIf="firstForm.confirmPassword.invalid &&( firstForm.confirmPassword.touched || triedFirst)">this field is required!!</p></div>
+  <label><span>confirm password</span><input (keyup)='onClickPassword()' type="password" formControlName="confirmPassword" required [class.noValid]="(firstForm.confirmPassword.invalid || passNoMach) &&( firstForm.confirmPassword.touched || triedFirst)"></label>
+  <div class="textValid">
+    <p *ngIf="(firstForm.confirmPassword.invalid) &&( firstForm.confirmPassword.touched || triedFirst)">this field is required!!</p>
+    <p *ngIf="firstForm.confirmPassword.valid &&  passNoMach &&( firstForm.confirmPassword.touched || triedFirst)">password and confirmPassword no mached</p>
+  </div>
   <button (click)="next()">next</button>
 </div>
 
   <div  formGroupName="secForm"  [hidden]="firstSwitch">
       <h2>register  ---   STEP 2</h2>
       <hr>
-  <label><span>city</span><input type="text" formControlName="city" required  [class.noValid]="secForm.city.invalid &&( secForm.city.touched || triedsec)"></label>
+  <label class="dropdown"><span>city</span><input (focus)="onFocus()" (focusout)="onFocusOut($event)" id="cityInp" type="text" formControlName="city" required  [class.noValid]="secForm.city.invalid &&( secForm.city.touched || triedsec)">
+  <div class="dropdown-content" [hidden]="hideSities">
+      <p (click)="onCoice($event)" class="cityP" *ngFor="let sity of sities">{{sity}}</p>
+      </div>
+    </label>
+  <!-- <label><span>city</span><input type="text" formControlName="city" required  [class.noValid]="true"></label> -->
   <div class="textValid"><p *ngIf="secForm.city.invalid &&( secForm.city.touched || triedsec)">this field is required!!</p></div>
   <label><span>street</span><input type="text" formControlName="street" required [class.noValid]="secForm.street.invalid &&( secForm.street.touched || triedsec)"></label>
   <div class="textValid"><p *ngIf="secForm.street.invalid &&( secForm.street.touched || triedsec)">this field is required!!</p></div>
@@ -29,6 +37,7 @@
   <div class="textValid"><p *ngIf="secForm.firstName.invalid &&( secForm.firstName.touched || triedsec)">this field is required!!</p></div>
   <label><span>last Name</span><input type="text" formControlName="lastName" required [class.noValid]="secForm.lastName.invalid &&( secForm.lastName.touched || triedsec)"></label>
   <div class="textValid"><p *ngIf="secForm.lastName.invalid &&( secForm.lastName.touched || triedsec)">this field is required!!</p></div>
-  <input type="submit" value="register">
+  <!-- <input type="submit" value="register"> -->
+  <button (click)="onSubmit()">register</button>
 </div>
 </form>
