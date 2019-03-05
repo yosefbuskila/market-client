@@ -11,23 +11,23 @@ export class RegisterComponent implements OnInit {
   @ViewChild('streetInput') streetInput: ElementRef;
   triedFirst=false;
   triedsec=false;
-  firstSwitch=false;
+  firstSwitch=true;
   hideSities=true;
   passNoMach=false;
   sities=[ "Jerusalem","Tiberias","Dimona","Afula","Beit Shemesh","Bnei Brak","Ashkelon","Hatzor","Arad","London"]
   filterSities=[ "Jerusalem","Tiberias","Dimona","Afula","Beit Shemesh","Bnei Brak","Ashkelon","Hatzor","Arad","London"];
   profileForm = this.fb.group({
     firstForm: this.fb.group({
-      id: ['1'],
-      email: ['abc@gmail.com'],
+      id: ['21512'],
+      email: ['wdw1qaxbdc@gmail.com'],
       password: ['111'],
       confirmPassword: ['111']
     }),
     secForm: this.fb.group({
-      city: [''],
-      street: [''],
-      firstName: [''],
-      lastName: ['']
+      city: ['jer'],
+      street: ['brz'],
+      firstName: ['yos'],
+      lastName: ['bus']
     }),
   });
   firstForm=this.profileForm.controls.firstForm['controls'];
@@ -54,18 +54,11 @@ export class RegisterComponent implements OnInit {
         alert( msg+ 'plese log in or register at another details')
         else this.firstSwitch=false;
     })
-    // this.httpService.chackId(this.firstForm.id.value).subscribe(data=>console.log('id',data))
-    // this.httpService.chackEmail(this.firstForm.email.value).subscribe(data=>console.log('email',data))
-    // this.firstSwitch=false;
-    // console.log('ok')
   }
   onClickPassword(){
     if(this.firstForm.password.value!==this.firstForm.confirmPassword.value)
     this.passNoMach=true;
     else this.passNoMach=false;
-  }
-  onSubmit(){
-    this.triedsec=true;
   }
   onCoice(event){
     console.log(this.streetInput)
@@ -84,5 +77,19 @@ export class RegisterComponent implements OnInit {
   onClickCity(event){
     console.log(event.target.value)
     this.filterSities= this.sities.filter(word => word.toLowerCase().includes (event.target.value.toLowerCase()));
+  }
+  onSubmit(){
+    this.triedsec=true;
+    if(this.profileForm.controls.secForm.valid){
+      // console.log(this.profileForm.value)
+      let vals=this.profileForm.value;
+      let deatailsReg={"regDeatails":[vals.firstForm.email,vals.firstForm.password,vals.secForm.firstName,vals.secForm.lastName,'null','null',vals.secForm.street,'null',vals.secForm.city,'null',vals.firstForm.id]}
+      // let deatailsReg=JSON.parse(` {"abc":5  }`)
+      // console.log(deatailsReg)
+      this.httpService.register(deatailsReg).subscribe(data=>{
+        if(data.success)
+        console.log('aaa',data)
+      })
+    }
   }
 }

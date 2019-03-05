@@ -6,7 +6,7 @@ import { Observable,forkJoin } from 'rxjs';
 })
 export class HttpService {
   private url='http://localhost:3001/';
-  heaJson = {
+  headJson = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   constructor(private http:HttpClient) { }
@@ -18,10 +18,13 @@ export class HttpService {
     return this.http.get<[number]>(this.url+'gen/sum/items');
   }
   logIn(logInData):Observable<any>{
-    return this.http.post<any>(this.url+'user/login',logInData,this.heaJson);
+    return this.http.post<any>(this.url+'user/login',logInData,this.headJson);
   }
   getLastOrder(entryDetails):Observable<any>{
-    return this.http.post<any>(this.url+'api/last_order',entryDetails,this.heaJson);
+    return this.http.post<any>(this.url+'api/last_order',entryDetails,this.headJson);
+  }
+  register(regDetails):Observable<any>{
+    return this.http.post<any>(this.url+'user/reg',regDetails,this.headJson);
   }
 
   chacIdEmail(id:string,email:string): Observable<any[]>{
@@ -31,12 +34,6 @@ export class HttpService {
     return forkJoin([responseId, responseEmail]);
   }
 
-  chackId(id:string):Observable<[any]>{
-    return this.http.get<[any]>(this.url+'user/exist/personal_number/'+id);
-  }
-  chackEmail(email:string):Observable<[any]>{
-    return this.http.get<[any]>(this.url+'user/exist/email/'+email);
-  }
 
 
 }
