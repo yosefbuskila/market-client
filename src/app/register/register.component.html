@@ -24,14 +24,14 @@
   <div  formGroupName="secForm"  [hidden]="firstSwitch">
       <h2>register  ---   STEP 2</h2>
       <hr>
-  <label class="dropdown"><span>city</span><input (focus)="onFocus()" (focusout)="onFocusOut($event)" id="cityInp" type="text" formControlName="city" required  [class.noValid]="secForm.city.invalid &&( secForm.city.touched || triedsec)">
+  <label class="dropdown"><span>city</span><input (focus)="onFocus()" (keyup)='onClickCity($event)' (focusout)="onFocusOut($event)" id="cityInp" type="text" formControlName="city" required  [class.noValid]="secForm.city.invalid &&( secForm.city.touched || triedsec)">
   <div class="dropdown-content" [hidden]="hideSities">
-      <p (click)="onCoice($event)" class="cityP" *ngFor="let sity of sities">{{sity}}</p>
+      <p (click)="onCoice($event)" class="cityP" *ngFor="let city of filterSities">{{city}}</p>
       </div>
     </label>
   <!-- <label><span>city</span><input type="text" formControlName="city" required  [class.noValid]="true"></label> -->
   <div class="textValid"><p *ngIf="secForm.city.invalid &&( secForm.city.touched || triedsec)">this field is required!!</p></div>
-  <label><span>street</span><input type="text" formControlName="street" required [class.noValid]="secForm.street.invalid &&( secForm.street.touched || triedsec)"></label>
+  <label><span>street</span><input #streetInput type="text" formControlName="street" required [class.noValid]="secForm.street.invalid &&( secForm.street.touched || triedsec)"></label>
   <div class="textValid"><p *ngIf="secForm.street.invalid &&( secForm.street.touched || triedsec)">this field is required!!</p></div>
   <label><span>first Name</span><input type="text" formControlName="firstName" required [class.noValid]="secForm.firstName.invalid &&( secForm.firstName.touched || triedsec)"></label>
   <div class="textValid"><p *ngIf="secForm.firstName.invalid &&( secForm.firstName.touched || triedsec)">this field is required!!</p></div>

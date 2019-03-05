@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpService } from '../httpservice.service';
 
@@ -8,12 +8,14 @@ import { HttpService } from '../httpservice.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild('streetInput') streetInput: ElementRef;
   triedFirst=false;
   triedsec=false;
   firstSwitch=false;
   hideSities=true;
   passNoMach=false;
   sities=[ "Jerusalem","Tiberias","Dimona","Afula","Beit Shemesh","Bnei Brak","Ashkelon","Hatzor","Arad","London"]
+  filterSities=[ "Jerusalem","Tiberias","Dimona","Afula","Beit Shemesh","Bnei Brak","Ashkelon","Hatzor","Arad","London"];
   profileForm = this.fb.group({
     firstForm: this.fb.group({
       id: ['1'],
@@ -66,15 +68,21 @@ export class RegisterComponent implements OnInit {
     this.triedsec=true;
   }
   onCoice(event){
-    console.log('coice')
+    console.log(this.streetInput)
     this.secForm.city.setValue(event.target.innerText)
+    setTimeout(_=>{this.streetInput.nativeElement.focus();this.filterSities=this.sities},200)
+    this.streetInput.nativeElement.focus();
   }
   onFocus(){
     this.hideSities=false;
     console.log('in')
   }
   onFocusOut(event){
-    setTimeout(_=>this.hideSities=true,200)
+    setTimeout(_=>this.hideSities=true,100)
     console.log('out')
+  }
+  onClickCity(event){
+    console.log(event.target.value)
+    this.filterSities= this.sities.filter(word => word.toLowerCase().includes (event.target.value.toLowerCase()));
   }
 }
