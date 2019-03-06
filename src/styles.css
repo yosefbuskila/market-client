@@ -1,5 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-/* body{ */
-    /* background-color: rgb(241,241,241); */
-/* } */
+body{
+    margin: 0;
+}
+.productsCont{
+    /* max-width: 100%; */
+    display: flex;
+    /* align-items: stretch; */
+}
+.leftContProducts{
+    background-color:rgba(00, 00, 00, 0.22);
+    min-width: 250px;
+    width: 250px;
+     min-height: 600px;
+     /* flex: 30%;  */
+    /* flex-flow: 2; */
 
+}
+app-products{
+     /* flex: 70%; */
+     min-width: 50%;
+}

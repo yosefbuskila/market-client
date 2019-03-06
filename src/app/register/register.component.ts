@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpService } from '../httpservice.service';
+import { DinamicService } from '../dinamic.service';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,9 @@ export class RegisterComponent implements OnInit {
   secForm=this.profileForm.controls.secForm['controls'];
   constructor(
     private httpService:HttpService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private dinService:DinamicService
+  ) { }
 
   ngOnInit() {
   }
@@ -88,7 +91,7 @@ export class RegisterComponent implements OnInit {
       // console.log(deatailsReg)
       this.httpService.register(deatailsReg).subscribe(data=>{
         if(data.success)
-        console.log('aaa',data)
+        this.dinService.logIn( {email: vals.firstForm.email, password: vals.firstForm.password});
       })
     }
   }

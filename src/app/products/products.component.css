@@ -1,0 +1,31 @@
+/* nav{ */
+    /* display: flex; */
+    /* overflow-x: scroll; */
+    /* width: 1000px; */
+    
+/* } */
+button{
+    min-width: 150px;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+nav{
+    overflow-x : auto;
+    white-space: nowrap;
+    margin: 10px;
+    padding: 8px;
+    background-color:rgba(00, 00, 00, 0.22);
+}
+#searchImg{
+    height: 25px;
+    margin: 0 10px;
+    position: relative;
+    top: 8px;
+    border: 1px solid white;
+    }
+    #searchImg:hover{
+        border-color: purple;
+    }
+    #searchImg:active {
+        border:2px solid blue;
+    }

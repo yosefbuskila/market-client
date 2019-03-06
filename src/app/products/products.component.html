@@ -1,0 +1,8 @@
+<nav>
+  <span>Serch Product: &nbsp;</span>
+  <input type="text" hint="Product name">
+  <img id="searchImg" src="assets/search.png" alt="">
+  <!-- <div id="navDiv"> -->
+  <button *ngFor="let cat of categories" (click)="onChooseCat($event)" id={{cat.id}}>{{cat.name}}</button>
+<!-- </div> -->
+</nav>

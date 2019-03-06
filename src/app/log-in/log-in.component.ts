@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpService } from '../httpservice.service';
-import { Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { DinamicService } from '../dinamic.service';
 
 @Component({
   selector: 'app-log-in',
@@ -17,9 +15,7 @@ formLogIn=new FormGroup({
 })
 inputs;
   constructor(
-    private httpService:HttpService,
-    private router:Router,
-    private dataService:DataService
+    private dinService:DinamicService
   ) {
     this.inputs=this.formLogIn.controls;
    }
@@ -34,18 +30,20 @@ inputs;
       alert('data is not valid')
       return;
     }
-    this.httpService.logIn(this.formLogIn.value).subscribe((data)=>{
-      console.log('ans:',data)
-      if(!data.success){
-        alert('log in faild')
-        return;
-      }
-      localStorage['entryDetails']=JSON.stringify( data['entryDetails'])
-      localStorage['userDetails']=JSON.stringify(data['userDetails'])
-      this.dataService.setProp();
-      this.router.navigate(['/home'])
-      // this.location.replaceState('home')
-      }  )
+    this.dinService.logIn(this.formLogIn.value);
+    console.log('logD',this.formLogIn.value)
+    // this.httpService.logIn(this.formLogIn.value).subscribe((data)=>{
+    //   console.log('ans:',data)
+    //   if(!data.success){
+    //     alert('log in faild')
+    //     return;
+    //   }
+    //   localStorage['entryDetails']=JSON.stringify( data['entryDetails'])
+    //   localStorage['userDetails']=JSON.stringify(data['userDetails'])
+    //   this.dataService.setProp();
+    //   this.router.navigate(['/home'])
+    //   // this.location.replaceState('home')
+    //   }  )
     
     console.log(this.formLogIn)
   }
