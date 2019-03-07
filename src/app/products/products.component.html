@@ -1,8 +1,16 @@
 <nav>
   <span>Serch Product: &nbsp;</span>
-  <input type="text" hint="Product name">
-  <img id="searchImg" src="assets/search.png" alt="">
+  <input type="text" hint="Product name" [(ngModel)]="valueSearch" (keypress)="onKeyInp($event)">
+  <img id="searchImg" src="assets/search.png" alt="" (click)="onSearch()">
   <!-- <div id="navDiv"> -->
-  <button *ngFor="let cat of categories" (click)="onChooseCat($event)" id={{cat.id}}>{{cat.name}}</button>
+  <button *ngFor="let cat of dataService.categories" (click)="onChooseCat(cat)" id={{cat.id}}>{{cat.name}}</button>
 <!-- </div> -->
 </nav>
+<div id='productsCont'>
+  <div *ngFor="let product of products" (click)="onClickProduct(product)">
+    <div>
+    <img src="{{httpService.picUrl}}{{product.id}}{{product.picture}}" alt="">
+  </div>
+    <h2>{{product.name}}</h2>
+  </div>
+</div>

@@ -24,6 +24,9 @@ export class DinamicService {
       localStorage['entryDetails']=JSON.stringify( data['entryDetails'])
       localStorage['userDetails']=JSON.stringify(data['userDetails'])
       this.dataService.setProp();
+      if(data.userDetails.role==='admin')
+      this.router.navigate(['/admin'])
+      else
       this.router.navigate(['/home'])
       // this.location.replaceState('home')
       }  )

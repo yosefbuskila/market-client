@@ -8,6 +8,8 @@ export class DataService {
   public userDetails;
   public entryDetails;
   public name='guest';
+  public categories;
+  public productChoice={id:null, name:null, categery_id: null, price: null, picture: null};
   constructor() {
     this.setProp();
    }

@@ -21,7 +21,7 @@ nav{
     margin: 0 10px;
     position: relative;
     top: 8px;
-    border: 1px solid white;
+    border: 2px solid white;
     }
     #searchImg:hover{
         border-color: purple;
@@ -29,3 +29,25 @@ nav{
     #searchImg:active {
         border:2px solid blue;
     }
+    #productsCont{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #productsCont> div{
+        margin: 15px;
+        width: 200px;
+        height: 250px;
+        border: 1px solid #f572728a
+    }
+    #productsCont> div>div{
+        width: 200px;
+        height: 200px;
+    }
+    #productsCont> div>div img{
+        max-width: 200px;
+        max-height: 200px;
+    }
+    #productsCont h2{
+        text-align: center;
+    }
+

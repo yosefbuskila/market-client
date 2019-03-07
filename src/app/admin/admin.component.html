@@ -1,6 +1,38 @@
 <div class="productsCont">
   <div class="leftContProducts">
-    left
+      <br>
+      left <br>
+      <pre>
+      {{dataService.productChoice|json}}
+    </pre>
+    <br>
+    <button id="addBtn" (click)="onAdd()">add new</button>
+
+    <form id="myForm" [formGroup]='profileForm' (ngSubmit)="onSubmit()">
+        <label for="id">ID
+            <input [ngModel]="dataService.productChoice.id" id="id" type="number"  formControlName='id' disabled> 
+          </label>
+
+        <label for="name">Product Name</label>
+        <input [ngModel]="dataService.productChoice.name" id="name" type="text"  formControlName='name' required  [class.noValid]='inputs.name.invalid && submited'> 
+        
+        <label for="price">Product Price</label>
+        <input [ngModel]="dataService.productChoice.price" id="price" type="number"  formControlName='price' required [class.noValid]='inputs.price.invalid && submited'>
+        
+        <label for="categery">Categery</label>
+        <select [ngModel]="dataService.productChoice.categery_id"  id="categery" formControlName='categery'>
+            <option *ngFor="let cat of dataService.categories"  value={{cat.id}}>{{cat.name}}</option>
+          </select>
+          
+          <label for="picture">Cooice Picture</label>
+        <input id="picture" type="file"  formControlName='picture'>
+
+          <input type="submit" value="save"> 
+        
+        
+    </form>
+
+    
   </div>
   <app-products></app-products>
 </div>
