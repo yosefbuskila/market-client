@@ -11,6 +11,11 @@ export class HttpService {
   headJson = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  headFormData = {
+    // headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data ; boundary=------WebKitFormBoundaryQ8Azbp01YyrJzr65  '  })
+    // headers: new HttpHeaders({ 'Content-Type': 'form-data'  })
+    headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded'  })
+  }; 
   constructor(
     private http: HttpClient,
     private dataService: DataService
@@ -47,7 +52,10 @@ export class HttpService {
   getcategoryByStr(categoryStr): Observable<any> {
     return this.http.post<any>(this.url + 'api/product/name/' + categoryStr, this.dataService.entryDetails, this.headJson);
   }
-
+  
+  uploudProduct(fromData:FormData): Observable<any> {
+    return this.http.post<any>(this.url + 'admin/add' , fromData, this.headFormData);
+  }
 
 
 }
