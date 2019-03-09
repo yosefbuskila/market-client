@@ -14,7 +14,7 @@ export class HttpService {
   headFormData = {
     // headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data ; boundary=------WebKitFormBoundaryQ8Azbp01YyrJzr65  '  })
     // headers: new HttpHeaders({ 'Content-Type': 'form-data'  })
-    headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded'  })
+    headers: new HttpHeaders()
   }; 
   constructor(
     private http: HttpClient,
@@ -55,6 +55,9 @@ export class HttpService {
   
   uploudProduct(fromData:FormData): Observable<any> {
     return this.http.post<any>(this.url + 'admin/add' , fromData, this.headFormData);
+  }
+  updateProduct(fromData:FormData): Observable<any> {
+    return this.http.post<any>(this.url + 'admin/update' , fromData, this.headFormData);
   }
 
 

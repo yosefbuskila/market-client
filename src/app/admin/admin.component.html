@@ -1,11 +1,6 @@
 <div class="productsCont">
   <div class="leftContProducts">
-      <br>
-      left <br>
-      <pre>
-      {{dataService.productChoice|json}}
-    </pre>
-    <br>
+    
     <button id="addBtn" (click)="onAdd()">add new</button>
 
     <form id="myForm" [formGroup]='profileForm' (ngSubmit)="onSubmit($event)">
@@ -20,12 +15,12 @@
         <input [ngModel]="dataService.productChoice.price" id="price" type="number"  formControlName='price' required [class.noValid]='inputs.price.invalid && submited'>
         
         <label for="categery">Categery</label>
-        <select [ngModel]="dataService.productChoice.categery_id"  id="categery" formControlName='categery'>
+        <select [ngModel]="dataService.productChoice.categery_id"  id="categery" formControlName='categery' required [class.noValid]='inputs.categery.invalid && submited'>
             <option *ngFor="let cat of dataService.categories"  value={{cat.id}}>{{cat.name}}</option>
           </select>
           
           <label for="picture">Cooice Picture</label>
-        <input id="picture" type="file"  formControlName='picture'  (change)="fileChange($event)">
+        <input id="picture" type="file"  formControlName='picture'  (change)="fileChange($event)" required [class.noValid]='inputs.picture.invalid && submited'>
 
           <input type="submit" value="save"> 
         

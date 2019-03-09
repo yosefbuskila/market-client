@@ -7,7 +7,7 @@
 <!-- </div> -->
 </nav>
 <div id='productsCont'>
-  <div *ngFor="let product of products" (click)="onClickProduct(product)">
+  <div *ngFor="let product of dataService.products" (click)="onClickProduct(product)">
     <div>
     <img src="{{httpService.picUrl}}{{product.id}}{{product.picture}}" alt="">
   </div>

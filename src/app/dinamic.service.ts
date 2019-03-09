@@ -31,4 +31,10 @@ export class DinamicService {
       // this.location.replaceState('home')
       }  )
   }
+  onChooseCat(categoryId){
+    this.httpService.getcategoryById(categoryId).subscribe(data=>{
+      console.log(data.data)
+      this.dataService.products=data.data;
+    })
+  }
 }

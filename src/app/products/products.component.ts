@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../httpservice.service';
 import { DataService } from '../data.service';
+import { DinamicService } from '../dinamic.service';
 
 @Component({
   selector: 'app-products',
@@ -8,12 +9,12 @@ import { DataService } from '../data.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-products;
 valueSearch;
 
   constructor(
     private httpService:HttpService,
-    private dataService:DataService
+    private dataService:DataService,
+    private dinService:DinamicService
   ) { }
 
   ngOnInit() {
@@ -23,17 +24,14 @@ valueSearch;
     })
   }
   onChooseCat(category){
-    console.log(category)
-    this.httpService.getcategoryById(category.id).subscribe(data=>{
-      this.products=data.data;
-    })
+    this.dinService.onChooseCat(category.id);
   }
   onClickProduct(data){
     this.dataService.productChoice=data;
   }
   onSearch(){
     this.httpService.getcategoryByStr(this.valueSearch).subscribe(data=>{
-      this.products=data.data;
+      this.dataService.products=data.data;
     })
 
     console.log('search',this.valueSearch)
