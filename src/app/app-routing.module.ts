@@ -4,13 +4,15 @@ import {HomeComponent} from './home/home.component'
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { MarketComponent } from './market/market.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'logIn', component: LogInComponent },
   { path: 'reg', component: RegisterComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'market', component: MarketComponent },
 ];
 
 @NgModule({

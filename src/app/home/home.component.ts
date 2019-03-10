@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService } from '../httpservice.service';
 import { DataService } from '../data.service';
+import { DinamicService } from '../dinamic.service';
+import { HttpService } from '../httpservice.service';
 
 @Component({
   selector: 'app-home',
@@ -9,23 +10,25 @@ import { DataService } from '../data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-lastOrder:any=[];
+  lastOrder;
   constructor(
-    private router:Router,
     private httpService:HttpService,
-    private dataService:DataService
+    private router:Router,
+    private dataService:DataService,
+    // private dinService:DinamicService
     ) {
+      this.lastOrder=dataService.lastOrder;
     if(!this.dataService.entryDetails){
     this.router.navigate(['/logIn'])
     return;
     }
     this.httpService.getLastOrder(this.dataService.entryDetails).subscribe((data)=>{
-      this.lastOrder=data.data;
-      console.log('ans:',data.data)
-      console.log('len:',this.lastOrder.length)
+      this.dataService.lastOrder=data.data;
             }  )
    }
-
+   start(){
+    this.router.navigate(['/market'])
+   }
   ngOnInit() {
   }
 

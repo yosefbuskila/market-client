@@ -37,4 +37,5 @@ export class DinamicService {
       this.dataService.products=data.data;
     })
   }
+ 
 }

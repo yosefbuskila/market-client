@@ -36,7 +36,7 @@ nav{
     #productsCont> div{
         margin: 15px;
         width: 200px;
-        height: 250px;
+        height: 300px;
         border: 1px solid #f572728a
     }
     #productsCont> div>div{
@@ -47,7 +47,13 @@ nav{
         max-width: 200px;
         max-height: 200px;
     }
-    #productsCont h2{
+    #productsCont h2,#productsCont h3{
         text-align: center;
+    }
+    #productsCont h2{
+        margin-bottom : 10px;
+    }
+    #productsCont h3{
+        margin-top: 10px;
     }
 

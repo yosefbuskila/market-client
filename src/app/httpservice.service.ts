@@ -49,6 +49,7 @@ export class HttpService {
   getcategoryById(categoryId): Observable<any> {
     return this.http.post<any>(this.url + 'api/product/category/' + categoryId, this.dataService.entryDetails, this.headJson);
   }
+  
   getcategoryByStr(categoryStr): Observable<any> {
     return this.http.post<any>(this.url + 'api/product/name/' + categoryStr, this.dataService.entryDetails, this.headJson);
   }
@@ -58,6 +59,31 @@ export class HttpService {
   }
   updateProduct(fromData:FormData): Observable<any> {
     return this.http.post<any>(this.url + 'admin/update' , fromData, this.headFormData);
+  }
+  generateCart(): Observable<any> {
+    return this.http.post<any>(this.url + 'api/create_cart', this.dataService.entryDetails, this.headJson);
+  }
+  getDetailsCart(cartId): Observable<any> {
+    let req={
+      "id": this.dataService.entryDetails.id,
+      "token": this.dataService.entryDetails.token,
+      "data":{
+        "cartID": cartId
+          }
+      }      
+    return this.http.post<any>(this.url + 'api/items_cart', req, this.headJson);
+  }
+  addProductToCart(cartId:number,productId:number,Quantity:number): Observable<any> {
+    let req={
+      "id": this.dataService.entryDetails.id,
+      "token": this.dataService.entryDetails.token,
+      "data":{
+        "cartID": cartId,
+        "product_id": productId,
+        "Quantity": Quantity,
+          }
+      }      
+    return this.http.post<any>(this.url + 'api/add_to_cart', req, this.headJson);
   }
 
 

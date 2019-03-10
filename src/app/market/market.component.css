@@ -1,0 +1,95 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  /* display: block; */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 10px solid #888;
+  width: 60%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  margin-left: auto;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#productsCont{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+.modal-content h1{
+    margin: 10px auto 20px auto;
+}
+#prodIn{
+    margin: 15px;
+    width: 200px;
+    height: 300px;
+    /* border: 1px solid #f572728a */
+}
+#productsCont> div>div{
+    width: 200px;
+    height: 200px;
+}
+#productsCont> div>div img{
+    max-width: 200px;
+    max-height: 200px;
+}
+#productsCont h2,#productsCont h3{
+    text-align: center;
+}
+#productsCont h2{
+    margin-bottom : 10px;
+}
+#productsCont h3{
+    margin-top: 10px;
+}
+#formAdd{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+#formAdd label{
+    text-align: center;
+}
+#formAdd input{
+    height: 30px;
+    width:  30px;
+    margin: 0 auto; 
+    padding: 10px;
+}
+#formAdd button{
+    margin: 15px auto; 
+    height: 50px;
+    width: 50px;
+    
+}

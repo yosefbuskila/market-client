@@ -11,6 +11,7 @@ export class DataService {
   public categories;
   public products:{id: number, name: string, categery_id: number, price: number, picture: string}[];
   public productChoice={id:null, name:null, categery_id: null, price: null, picture: null};
+  lastOrder:any=[];
   constructor() {
     this.setProp();
    }

@@ -65,9 +65,7 @@ export class AdminComponent implements OnInit {
     console.log(this.profileForm)
     this.myFile=event.target.files[0];
     console.log(this.myFile)
-  }
-
-  
+  }  
   onAdd(){
     this.dataService.productChoice={"id":null,"name":null,"categery_id":null,"price":null,"picture":null};
     this.profileForm.setValue({

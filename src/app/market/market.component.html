@@ -1,0 +1,33 @@
+<div class="productsCont">
+  <!-- <button (click)="popUp=true;">pop</button> -->
+    <div *ngIf="this.dataService.productChoice && this.dataService.productChoice.id" id="myModal" class="modal" (click)="onClickModel($event)">
+        <!-- Modal content -->
+        <div class="modal-content" id="contentModel">
+          <span (click)="this.dataService.productChoice=null;" class="close">&times;</span>
+          <h1>add product to your cart</h1>
+          <div id='productsCont'>
+              <div id="prodIn">
+                <div>
+                <img src="{{httpService.picUrl}}{{this.dataService.productChoice.id}}{{this.dataService.productChoice.picture}}" alt="">
+              </div>
+                <h2>{{this.dataService.productChoice.name}}</h2>
+                <h3>{{this.dataService.productChoice.price}} ₪</h3>
+              </div>
+              <div id="formAdd">
+                <label for="num">units number</label> <input type="number" [(ngModel)]="numProducts">
+                <button (click)="addProduct()">ADD</button>
+              </div>
+            </div>
+        </div>
+      
+      </div>
+  <div class="leftContProducts">
+    {{detailsCart |json}}  
+    <br>
+    {{this.dataService.productChoice |json}}
+
+    
+  </div>
+  <app-products></app-products>
+</div>
+
