@@ -24,12 +24,13 @@ export class HomeComponent implements OnInit {
     }
     this.httpService.getLastOrder(this.dataService.entryDetails).subscribe((data)=>{
       this.dataService.lastOrder=data.data;
+      this.lastOrder=dataService.lastOrder;
             }  )
-   }
+         }
    start(){
     this.router.navigate(['/market'])
    }
   ngOnInit() {
   }
-
+  
 }

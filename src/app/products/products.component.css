@@ -42,10 +42,12 @@ nav{
     #productsCont> div>div{
         width: 200px;
         height: 200px;
+        display: flex;
     }
     #productsCont> div>div img{
         max-width: 200px;
         max-height: 200px;
+        margin: auto;
     }
     #productsCont h2,#productsCont h3{
         text-align: center;

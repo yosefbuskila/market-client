@@ -10,7 +10,9 @@ body{
     background-color:rgba(00, 00, 00, 0.22);
     min-width: 250px;
     width: 250px;
-     min-height: 600px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
      /* flex: 30%;  */
     /* flex-flow: 2; */
 

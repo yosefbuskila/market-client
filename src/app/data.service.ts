@@ -7,6 +7,7 @@ import { setPreviousOrParentTNode } from '@angular/core/src/render3/state';
 export class DataService {
   public userDetails;
   public entryDetails;
+  public entryAndData;
   public name='guest';
   public categories;
   public products:{id: number, name: string, categery_id: number, price: number, picture: string}[];
@@ -21,6 +22,11 @@ setProp(){
   this.userDetails=JSON.parse( localStorage['userDetails']);
   this.entryDetails=JSON.parse(localStorage['entryDetails'])
   this.name=this.userDetails.first_name +' '+this.userDetails.last_name;
+  this.entryAndData={
+    "id": this.entryDetails.id,
+    "token": this.entryDetails.token,
+    "data":{ }
+    }
   };
 }
 

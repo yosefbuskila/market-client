@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { ProductsComponent } from './products/products.component';
 import { MarketComponent } from './market/market.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MarketComponent } from './market/market.component';
     RegisterComponent,
     AdminComponent,
     ProductsComponent,
-    MarketComponent
+    MarketComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

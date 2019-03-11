@@ -15,7 +15,7 @@ export class HttpService {
     // headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data ; boundary=------WebKitFormBoundaryQ8Azbp01YyrJzr65  '  })
     // headers: new HttpHeaders({ 'Content-Type': 'form-data'  })
     headers: new HttpHeaders()
-  }; 
+  };
   constructor(
     private http: HttpClient,
     private dataService: DataService
@@ -49,41 +49,45 @@ export class HttpService {
   getcategoryById(categoryId): Observable<any> {
     return this.http.post<any>(this.url + 'api/product/category/' + categoryId, this.dataService.entryDetails, this.headJson);
   }
-  
+
   getcategoryByStr(categoryStr): Observable<any> {
     return this.http.post<any>(this.url + 'api/product/name/' + categoryStr, this.dataService.entryDetails, this.headJson);
   }
-  
-  uploudProduct(fromData:FormData): Observable<any> {
-    return this.http.post<any>(this.url + 'admin/add' , fromData, this.headFormData);
+
+  uploudProduct(fromData: FormData): Observable<any> {
+    return this.http.post<any>(this.url + 'admin/add', fromData, this.headFormData);
   }
-  updateProduct(fromData:FormData): Observable<any> {
-    return this.http.post<any>(this.url + 'admin/update' , fromData, this.headFormData);
+  updateProduct(fromData: FormData): Observable<any> {
+    return this.http.post<any>(this.url + 'admin/update', fromData, this.headFormData);
   }
   generateCart(): Observable<any> {
     return this.http.post<any>(this.url + 'api/create_cart', this.dataService.entryDetails, this.headJson);
   }
   getDetailsCart(cartId): Observable<any> {
-    let req={
-      "id": this.dataService.entryDetails.id,
-      "token": this.dataService.entryDetails.token,
-      "data":{
-        "cartID": cartId
-          }
-      }      
-    return this.http.post<any>(this.url + 'api/items_cart', req, this.headJson);
+    this.dataService.entryAndData.data ={
+      "cartID": cartId
+    };
+    return this.http.post<any>(this.url + 'api/items_cart', this.dataService.entryAndData, this.headJson);
   }
-  addProductToCart(cartId:number,productId:number,Quantity:number): Observable<any> {
-    let req={
-      "id": this.dataService.entryDetails.id,
-      "token": this.dataService.entryDetails.token,
-      "data":{
-        "cartID": cartId,
-        "product_id": productId,
-        "Quantity": Quantity,
-          }
-      }      
-    return this.http.post<any>(this.url + 'api/add_to_cart', req, this.headJson);
+  addProductToCart(cartId: number, productId: number, Quantity: number): Observable<any> {
+    this.dataService.entryAndData.data = {
+      "cartID": cartId,
+      "product_id": productId,
+      "Quantity": Quantity,
+    };
+    return this.http.post<any>(this.url + 'api/add_to_cart', this.dataService.entryAndData, this.headJson);
+  }
+  removeProdFromCart(productId): Observable<any> {
+    this.dataService.entryAndData.data ={
+      "itemID": productId
+    };
+    return this.http.post<any>(this.url + 'api/delete_item_cart', this.dataService.entryAndData, this.headJson);
+  }
+  removeAllProd(cartID): Observable<any> {
+    this.dataService.entryAndData.data ={
+      "cartID": cartID
+    };
+    return this.http.post<any>(this.url + 'api/delete_item_cart', this.dataService.entryAndData, this.headJson);
   }
 
 

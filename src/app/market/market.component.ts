@@ -11,8 +11,10 @@ import { HttpService } from '../httpservice.service';
 export class MarketComponent implements OnInit {
 cartId:number;
 numProducts=1;
-
+sumOrders=0;
 detailsCart:any=[];
+hiddenProp=false;
+marketSwitch=true;
   constructor(
     private httpService: HttpService,
     private dataService: DataService,
@@ -26,7 +28,7 @@ detailsCart:any=[];
       }
   start() {
     console.log('last',this.dataService.lastOrder.length)
-    if(this.dataService.lastOrder.length===0 || this.dataService.lastOrder.done===1){
+    if(this.dataService.lastOrder.length===0 || this.dataService.lastOrder[0].done===1){
       this.httpService.generateCart().subscribe(data=>{
         this.cartId=data.id;
         // this.getDetailsCart();
@@ -42,6 +44,10 @@ detailsCart:any=[];
     this.httpService.getDetailsCart(this.cartId).subscribe(data=>{
       console.log('details cart',data)
       this.detailsCart=data.data;
+      this.sumOrders=0;
+      this.detailsCart.forEach(element => {
+        this.sumOrders+=element.price_sum;
+      });
     })
   }
 
@@ -63,6 +69,34 @@ detailsCart:any=[];
 
       }
     })   
+  }
+  deliteProduct(productId){
+    this.httpService.removeProdFromCart(productId).subscribe(data=>{
+      if(data.sucess){
+        this.getDetailsCart()
+      }
+    })
+  }
+  deleteAllOrder(){
+    this.httpService.removeAllProd(this.cartId).subscribe(data=>{
+      if(data.sucess){
+        this.getDetailsCart()
+      }
+    })
+  }
+  onSearch(event){
+    this.detailsCart.forEach(element => {
+      if(element.name.toLowerCase().includes(event.target.value.toLowerCase()) )
+        element.focus=true;
+        else
+        element.focus=false;
+        if(event.target.value==='')
+        element.focus=false;      
+    });
+
+
+
+    console.log(this.detailsCart)
   }
 
 }
