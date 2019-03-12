@@ -89,6 +89,9 @@ export class HttpService {
     };
     return this.http.post<any>(this.url + 'api/delete_item_cart', this.dataService.entryAndData, this.headJson);
   }
+  getBusyDays(): Observable<any> {
+    return this.http.post<any>(this.url + 'api/busy_day', this.dataService.entryDetails, this.headJson);
+  }
 
 
 }

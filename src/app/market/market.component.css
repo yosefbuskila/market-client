@@ -171,3 +171,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   .focus{
       background-color: yellow;
   }
+  app-order{
+      width: 100%;
+  }

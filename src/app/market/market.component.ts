@@ -14,7 +14,7 @@ numProducts=1;
 sumOrders=0;
 detailsCart:any=[];
 hiddenProp=false;
-marketSwitch=true;
+marketSwitch=false;
   constructor(
     private httpService: HttpService,
     private dataService: DataService,

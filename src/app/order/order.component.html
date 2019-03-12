@@ -1,3 +1,24 @@
-<p>
-  order works!
-</p>
+<form [formGroup]="profileForm" id="myForm">
+  
+
+    <h2>Shiping Details</h2>
+    <hr>
+
+<label><span>City</span><input type="text" formControlName="city" required [class.noValid]="controls.city.invalid &&( controls.city.touched || tried)"></label>
+<div class="textValid"><p *ngIf="controls.city.invalid &&( controls.city.touched || tried)">this field is required!!</p></div>
+<label><span>Street</span><input type="text" formControlName="street" required [class.noValid]="controls.street.invalid &&( controls.street.touched || tried)"></label>
+<div class="textValid"><p *ngIf="controls.street.invalid &&( controls.street.touched || tried)">this field is required!!</p></div>
+<label><span>Credit Card</span><input type="text" formControlName="creditCard" required [class.noValid]="controls.creditCard.invalid &&( controls.creditCard.touched || tried)"></label>
+<label><span>Shipping Date</span>
+  <select (change)="onCoiceDate($event)" formControlName="shippingDate" required [class.noValid]="(controls.shippingDate.invalid || dateNoValid )&&( controls.shippingDate.touched || tried)">
+      <option *ngFor="let date of shippingDates" [class.mark]="date.mark" value={{date.date_ship}} (click)="onCoiceDate()">{{date.date_ship}}</option>
+    </select>
+</label>
+<div class="textValidPlus">
+        <p *ngIf="(controls.shippingDate.invalid) &&( controls.shippingDate.touched || tried)">this field is required!!</p>
+        <p *ngIf="controls.shippingDate.valid &&  dateNoValid &&( controls.shippingDate.touched || tried)">The unavailable days are marked in red. Please choose another day </p>
+      </div>
+
+<button (click)="onSubmit()">Order</button>
+
+</form>
