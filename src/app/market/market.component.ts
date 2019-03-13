@@ -12,7 +12,6 @@ export class MarketComponent implements OnInit {
 
 numProducts=1;
 sumOrders=0;
-detailsCart:any=[];
 hiddenProp=false;
 marketSwitch=true;
   constructor(
@@ -43,9 +42,9 @@ marketSwitch=true;
   getDetailsCart(){
     this.httpService.getDetailsCart(this.dataService.cartId).subscribe(data=>{
       console.log('details cart',data)
-      this.detailsCart=data.data;
+      this.dataService.detailsCart=data.data;
       this.sumOrders=0;
-      this.detailsCart.forEach(element => {
+      this.dataService.detailsCart.forEach(element => {
         this.sumOrders+=element.price_sum;
       });
     })
@@ -85,7 +84,7 @@ marketSwitch=true;
     })
   }
   onSearch(event){
-    this.detailsCart.forEach(element => {
+    this.dataService.detailsCart.forEach(element => {
       if(element.name.toLowerCase().includes(event.target.value.toLowerCase()) )
         element.focus=true;
         else
@@ -96,7 +95,7 @@ marketSwitch=true;
 
 
 
-    console.log(this.detailsCart)
+    // console.log(this.detailsCart)
   }
 
 }

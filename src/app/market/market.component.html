@@ -27,7 +27,7 @@
           <hr>
           <label>Search product<input type="text" (keyup)='onSearch($event)'></label>
     <div id="contProds">
-    <div *ngFor="let product of detailsCart">
+    <div *ngFor="let product of dataService.detailsCart">
         <span [hidden]="!marketSwitch"  class="close" (click)="deliteProduct(product.itemId)">&times;</span>
         <div id="prodDitails">
       <div class="contImg"><img src="{{httpService.picUrl}}{{product.id}}{{product.picture}}" alt=""></div>
