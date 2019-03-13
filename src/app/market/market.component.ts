@@ -9,12 +9,12 @@ import { HttpService } from '../httpservice.service';
   styleUrls: ['./market.component.css']
 })
 export class MarketComponent implements OnInit {
-cartId:number;
+
 numProducts=1;
 sumOrders=0;
 detailsCart:any=[];
 hiddenProp=false;
-marketSwitch=false;
+marketSwitch=true;
   constructor(
     private httpService: HttpService,
     private dataService: DataService,
@@ -30,18 +30,18 @@ marketSwitch=false;
     console.log('last',this.dataService.lastOrder.length)
     if(this.dataService.lastOrder.length===0 || this.dataService.lastOrder[0].done===1){
       this.httpService.generateCart().subscribe(data=>{
-        this.cartId=data.id;
+        this.dataService.cartId=data.id;
         // this.getDetailsCart();
       })
     }
     else{
-      this.cartId=this.dataService.lastOrder[0].id;
+      this.dataService.cartId=this.dataService.lastOrder[0].id;
       this.getDetailsCart();
     }
     
   }
   getDetailsCart(){
-    this.httpService.getDetailsCart(this.cartId).subscribe(data=>{
+    this.httpService.getDetailsCart(this.dataService.cartId).subscribe(data=>{
       console.log('details cart',data)
       this.detailsCart=data.data;
       this.sumOrders=0;
@@ -62,7 +62,7 @@ marketSwitch=false;
     alert('units is required');
     return;
     }
-    this.httpService.addProductToCart(this.cartId,this.dataService.productChoice.id,this.numProducts).subscribe(date=>{
+    this.httpService.addProductToCart(this.dataService.cartId,this.dataService.productChoice.id,this.numProducts).subscribe(date=>{
       if(date.sucess){
         this.dataService.productChoice=null;
         this.getDetailsCart()
@@ -78,7 +78,7 @@ marketSwitch=false;
     })
   }
   deleteAllOrder(){
-    this.httpService.removeAllProd(this.cartId).subscribe(data=>{
+    this.httpService.removeAllProd(this.dataService.cartId).subscribe(data=>{
       if(data.sucess){
         this.getDetailsCart()
       }

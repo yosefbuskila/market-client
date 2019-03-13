@@ -77,6 +77,10 @@ export class HttpService {
     };
     return this.http.post<any>(this.url + 'api/add_to_cart', this.dataService.entryAndData, this.headJson);
   }
+  createShiping(shpingDitails): Observable<any> {
+    this.dataService.entryAndData.data = shpingDitails;
+    return this.http.post<any>(this.url + 'api/update_ship', this.dataService.entryAndData, this.headJson);
+  }
   removeProdFromCart(productId): Observable<any> {
     this.dataService.entryAndData.data ={
       "itemID": productId

@@ -29,7 +29,10 @@
     display: flex;
 }
 #myForm label span{
-    width: 140px;
+    width: 129px;
+}
+#myForm input,#myForm select{
+    width: 169px;
 }
 #myForm button,#myForm input[type="submit"]{
     width: 230px;

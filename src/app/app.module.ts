@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductsComponent } from './products/products.component';
 import { MarketComponent } from './market/market.component';
 import { OrderComponent } from './order/order.component';
+import { OkComponent } from './ok/ok.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { OrderComponent } from './order/order.component';
     AdminComponent,
     ProductsComponent,
     MarketComponent,
-    OrderComponent
+    OrderComponent,
+    OkComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
   <label><span>email</span><input type="email" formControlName="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [class.noValid]="firstForm.email.invalid &&( firstForm.email.touched || triedFirst)"></label>
   <div class="textValid">
     <span *ngIf="firstForm.email.invalid &&( firstForm.email.touched || triedFirst)">
-  <p *ngIf="firstForm.email.errors.required">this field is required2!!</p>
+  <p *ngIf="firstForm.email.errors.required">this field is required!!</p>
   <p *ngIf="firstForm.email.errors.pattern">enter normal email adress!!</p>
 </span>
 </div>
