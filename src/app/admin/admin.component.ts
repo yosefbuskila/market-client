@@ -21,10 +21,10 @@ export class AdminComponent implements OnInit {
   });
   inputs=this.profileForm.controls;
   constructor(
-    private httpService:HttpService,
-    private dataService: DataService,
-    private fb: FormBuilder,
-    private dinService:DinamicService
+    public httpService:HttpService,
+    public dataService: DataService,
+    public fb: FormBuilder,
+    public dinService:DinamicService
   ) { }
 
   ngOnInit() {

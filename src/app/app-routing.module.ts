@@ -8,7 +8,8 @@ import { MarketComponent } from './market/market.component';
 import { OkComponent } from './ok/ok.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'logIn', component: LogInComponent },
   { path: 'reg', component: RegisterComponent },

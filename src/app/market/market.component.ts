@@ -15,8 +15,8 @@ sumOrders=0;
 hiddenProp=false;
 marketSwitch=true;
   constructor(
-    private httpService: HttpService,
-    private dataService: DataService,
+    public httpService: HttpService,
+    public dataService: DataService,
   ) {
     // this.numProducts=1;
     

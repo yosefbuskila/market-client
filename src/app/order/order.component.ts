@@ -22,10 +22,10 @@ export class OrderComponent implements OnInit {
   busyDays:[];
   dateNoValid;
   constructor(
-    private router:Router,
-    private dataService:DataService,
-    private fb: FormBuilder,
-    private httpService: HttpService,
+    public router:Router,
+    public dataService:DataService,
+    public fb: FormBuilder,
+    public httpService: HttpService,
   ) {
     this.httpService.getBusyDays().subscribe(data=>{
       this.busyDays=data.data;

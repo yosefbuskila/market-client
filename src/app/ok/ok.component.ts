@@ -10,8 +10,8 @@ import { DataService } from '../data.service';
 export class OkComponent implements OnInit {
 
   constructor(
-    private router:Router,
-    private dataService: DataService,
+    public router:Router,
+    public dataService: DataService,
   ) { }
 
   ngOnInit() {

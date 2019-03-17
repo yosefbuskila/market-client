@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { DataService } from './data.service';
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-  public url = 'http://localhost:3001/';
-  public picUrl = this.url + 'pic/';
+  public url = environment.url
+  public picUrl =this.url +  environment.picUrl;
   headJson = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -19,7 +20,9 @@ export class HttpService {
   constructor(
     private http: HttpClient,
     private dataService: DataService
-  ) { }
+  ) {
+    console.log('env',this.url,this.picUrl)
+   }
 
   getNumOrders(): Observable<[number]> {
     return this.http.get<[number]>(this.url + 'gen/sum/orders');

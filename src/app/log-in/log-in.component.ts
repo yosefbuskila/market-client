@@ -15,7 +15,7 @@ formLogIn=new FormGroup({
 })
 inputs;
   constructor(
-    private dinService:DinamicService
+    public dinService:DinamicService
   ) {
     this.inputs=this.formLogIn.controls;
    }

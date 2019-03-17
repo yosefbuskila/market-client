@@ -34,9 +34,9 @@ export class RegisterComponent implements OnInit {
   firstForm=this.profileForm.controls.firstForm['controls'];
   secForm=this.profileForm.controls.secForm['controls'];
   constructor(
-    private httpService:HttpService,
-    private fb: FormBuilder,
-    private dinService:DinamicService
+    public httpService:HttpService,
+    public fb: FormBuilder,
+    public dinService:DinamicService
   ) { }
 
   ngOnInit() {

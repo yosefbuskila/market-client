@@ -12,9 +12,9 @@ export class ProductsComponent implements OnInit {
 valueSearch;
 
   constructor(
-    private httpService:HttpService,
-    private dataService:DataService,
-    private dinService:DinamicService
+    public httpService:HttpService,
+    public dataService:DataService,
+    public dinService:DinamicService
   ) { }
 
   ngOnInit() {

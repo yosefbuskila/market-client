@@ -9,9 +9,9 @@ import { DataService } from './data.service';
 })
 export class AppComponent {
   // nameOfUser = 'guest';
-  private numOrders:number;
-  private numItems:number;
-  constructor(private httpService:HttpService , private dataService:DataService){
+  public numOrders:number;
+  public numItems:number;
+  constructor(public httpService:HttpService , public dataService:DataService){
     
     }
   ngOnInit() {

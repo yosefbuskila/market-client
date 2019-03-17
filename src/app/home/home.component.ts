@@ -12,9 +12,9 @@ import { HttpService } from '../httpservice.service';
 export class HomeComponent implements OnInit {
   lastOrder;
   constructor(
-    private httpService:HttpService,
-    private router:Router,
-    private dataService:DataService,
+    public httpService:HttpService,
+    public router:Router,
+    public dataService:DataService,
     // private dinService:DinamicService
     ) {
       this.lastOrder=dataService.lastOrder;
