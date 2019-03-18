@@ -1,14 +1,14 @@
 <div id="cont">
   <div>
   <h1>welcome to our store!!!!</h1>
-  <div *ngIf="lastOrder.length===1">
+  <div *ngIf="lastOrder && lastOrder.length===1">
   <h2 *ngIf="lastOrder[0].done===0">your last order still open, you can to continu in your order or to invite it</h2>
   <h2 *ngIf="lastOrder[0].done===1">We hope you enjoyed your last purchase, you can to start a new shoping</h2>
   <h3>date of last order is <span>{{lastOrder[0].date_cart|date:'dd/MM/yyyy'}}</span>, and sum price is <span>{{lastOrder[0].price}}</span>₪</h3>
   <button *ngIf="lastOrder[0].done===0" (click)="start()">continu shoping</button>
   <button *ngIf="lastOrder[0].done===1" (click)="start()">start shoping</button>
   </div>
-  <div *ngIf="lastOrder.length===0">
+  <div *ngIf="lastOrder && lastOrder.length===0">
     <h2>We will be happy to accompany you on your first purchase</h2>
     <button (click)="start()">start shoping</button>
   </div>

@@ -23,8 +23,10 @@ export class HomeComponent implements OnInit {
     return;
     }
     this.httpService.getLastOrder(this.dataService.entryDetails).subscribe((data)=>{
+      console.log('data',data)
       this.dataService.lastOrder=data.data;
       this.lastOrder=dataService.lastOrder;
+      console.log('last',this.lastOrder)
             }  )
          }
    start(){
